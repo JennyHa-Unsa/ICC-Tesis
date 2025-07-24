@@ -1,0 +1,170 @@
+\chapter{Introducción}
+
+El quechua es una lengua originaria de gran trascendencia cultural y social, hablada actualmente por alrededor de 8 millones de personas en la región andina de Sudamérica, especialmente en países como Perú, Bolivia, Ecuador y Colombia \cite{adelaar2004}. Esta lengua no solo es una parte esencial del patrimonio cultural de las comunidades quechuahablantes, sino que también juega un papel crucial en la identidad y en la preservación de las tradiciones de los pueblos andinos \cite{cerron2003linguistica}. Sin embargo, a pesar de su importancia histórica y cultural, el quechua enfrenta importantes barreras para su inclusión en el mundo digital. Una de las principales limitaciones radica en la falta de herramientas de traducción automática (TA) eficientes y confiables que permitan a los hablantes acceder a información digital en su lengua materna \cite{joshi2020}. Mientras que lenguas de mayor difusión como el español, inglés o francés han sido objeto de una amplia investigación y desarrollo de sofisticados sistemas de TA, el quechua sigue siendo una lengua desatendida en este ámbito \cite{torres2023}). Esta disparidad impide que la lengua quechua esté adecuadamente representada en servicios tecnológicos fundamentales como la educación, la salud, y la administración pública, lo cual afecta directamente a la calidad de vida y al acceso a derechos esenciales de las comunidades que la hablan \cite{bird2020}.
+
+A pesar de los esfuerzos recientes en el desarrollo de sistemas multilingües como el MarianMT \cite{junczys2018} y el NLLB-200 \cite{team2022no}, que han incorporado el quechua en sus modelos, estos avances no han sido suficientes para garantizar una traducción precisa que respete la riqueza semántica y cultural de esta lengua. En particular, los sistemas de traducción automática para el par quechua-español aún enfrentan desafíos significativos, ya que no han sido sometidos a evaluaciones rigurosas que aseguren su capacidad para preservar los matices lingüísticos y culturales que caracterizan al quechua \cite{rios2021}. Por ejemplo, conceptos fundamentales en la cosmovisión andina, como ``ayni'', que hace referencia al sistema de reciprocidad social, son frecuentemente traducidos de manera literal, perdiendo su profundo valor cultural en el proceso \cite{tiedemann2020opus}. Este fenómeno subraya la necesidad urgente de implementar evaluaciones más exhaustivas que no solo utilicen métricas automáticas como el BLEU \cite{papineni2002}, sino que también incluyan evaluaciones humanas que consideren la adecuación cultural y contextual de las traducciones, elementos esenciales para garantizar la calidad y la fiabilidad de los resultados \cite{lommel2014}.
+
+La presente investigación tiene como objetivo llenar este vacío de conocimiento mediante una evaluación comparativa de tres modelos de traducción automática: Google Translate, MarianMT y un modelo baseline basado en léxico. Esta evaluación se llevará a cabo desde dos enfoques clave. El primero consiste en una evaluación de la similitud semántica, empleando embeddings LaBSE \cite{feng2022} para medir la equivalencia conceptual de los términos traducidos. El segundo enfoque involucra una evaluación humana centrada en la fluidez y la adecuación cultural de las traducciones, la cual será realizada por hablantes nativos del quechua \cite{bird2020}. El estudio se enfocará en textos provenientes de dominios prioritarios para las comunidades quechuahablantes, como la educación bilingüe y la narrativa oral, especialmente en los dialectos del quechua sureño y central, que son los más hablados en la región \cite{adelaar2004}.
+
+La relevancia de esta investigación se encuentra en sus tres contribuciones fundamentales. En primer lugar, proporciona criterios prácticos y aplicables para la selección de modelos de traducción automática adecuados a contextos reales en lenguas indígenas, contribuyendo al desarrollo de herramientas de TA más efectivas para lenguas con pocos recursos \cite{neubig2018rapid}. En segundo lugar, valida el uso de métricas alternativas al BLEU, ofreciendo nuevas formas de evaluar la calidad de las traducciones en lenguas de bajo recurso como el quechua \cite{feng2022}. Finalmente, esta investigación generará un conjunto de datos abiertos que servirá como referencia para el desarrollo de futuras herramientas de traducción automática y tecnologías lingüísticas, no solo para el quechua, sino también para otras lenguas minoritarias\cite{zevallos2022}. Los resultados de este estudio tendrán un impacto significativo no solo en las comunidades quechuahablantes, mejorando su acceso a información y servicios digitales, sino también en el ámbito académico y tecnológico, abriendo nuevas vías para la investigación y desarrollo en el campo de las lenguas indígenas.
+
+Este trabajo no solo busca mejorar el acceso a la información en quechua, sino también contribuir al avance de la investigación en el campo de la traducción automática, promoviendo la inclusión digital de las lenguas originarias y, por ende, de sus hablantes \cite{bird2020}.
+
+\section{Justificación}
+
+La traducción automática para lenguas indígenas como el quechua es un desafío urgente en América Latina, donde más de 8 millones de personas preservan esta lengua como patrimonio cultural y medio de comunicación cotidiana (UNESCO, 2022). Sin embargo, la falta de herramientas tecnológicas adaptadas limita el acceso a información digitalizada y servicios públicos, perpetuando desigualdades en comunidades bilingües (Zavala et al., 2021). Este proyecto aborda esta brecha al evaluar críticamente métodos de traducción disponibles, contribuyendo a la preservación lingüística y democratización tecnológica (Hernández, 2020). Su relevancia social radica en potenciar la inclusión digital y fortalecer la identidad cultural quechua en entornos globalizados (Munteanu et al., 2023).
+
+Desde una perspectiva técnico-académica, el estudio innova al integrar embeddings multilingües (LaBSE) como métrica principal para evaluar calidad semántica, superando las limitaciones de métricas tradicionales como BLEU en escenarios de bajos recursos (Artetxe and Schwenk, 2019). Este enfoque, respaldado por estudios recientes (Chiang et al., 2023), permite evaluaciones más robustas en ausencia de corpus paralelos confiables. Además, la combinación de evaluación automática y humana establece un marco metodológico replicable para lenguas minoritarias (Rios et al., 2022). Los resultados aportarán evidencia empírica sobre la viabilidad de métodos comerciales (Google Translate) versus especializados (MarianMT), guiando futuras investigaciones en NLP para lenguas indígenas (Bird, 2020). Finalmente, el corpus monolingüe procesado y las traducciones generadas se convertirán en un recurso abierto, sentando bases para desarrollos tecnológicos éticos y culturalmente situados.
+
+\section{Trabajos Relacionados}
+La investigación en traducción automática (TA) para lenguas de bajos recursos ha avanzado mediante estrategias como transferencia lingüística cruzada, modelos multilingües y generación de datos sintéticos. Un hito destacado es el modelo NLLB-200 \cite{team2022no}, que logró mejorar la calidad de TA para más de 200 idiomas, incluido el quechua, mediante un entrenamiento masivo con datos equilibrados y técnicas de upsampling para lenguas minoritarias. Sin embargo, su evaluación se limitó a métricas superficiales como BLEU, ignorando la preservación semántica y cultural \cite{faisal2024dialectbench}. Por otro lado, \cite{lauscher2020zero}) demostraron que los modelos multilingües basados en transformers (ej: mBART) superan a enfoques monolingües en entornos de bajos recursos, gracias a su capacidad para transferir conocimiento entre idiomas morfológicamente similares, como el quechua y el aimara.
+
+En paralelo, técnicas de autoaprendizaje (self-training) han ganado relevancia. \cite{shi2021highland} aplicaron back-translation con modelos pre-entrenados para generar datos paralelos sintéticos en náhuatl, mejorando la calidad de TA en un 15\% según BLEU. No obstante, estos métodos dependen críticamente de la calidad del modelo inicial, lo que limita su aplicabilidad en lenguas con recursos casi nulos \cite{agic2019jw300}. Finalmente, el proyecto M2M-100 de \cite{fan2021beyond} introdujo un modelo de TA para 100 idiomas, incluyendo quechua, pero su evaluación en este último se basó en dominios restringidos (ej: textos religiosos), sin abordar la diversidad dialectal ni la informalidad del lenguaje cotidiano.
+
+En el contexto específico del quechua, al igual que Paccotacya-Yanque et al. (2022) con el habla emocional en el quechua, nuestro estudio aborda la brecha de recursos para quechua, pero enfocado en equivalencia semántica en TA escrita. Tiedemann y Thottingal (2020) desarrollaron el modelo OPUS-MT para el par quechua-español, utilizando datos de proyectos de localización y literatura bilingüe. Aunque lograron un BLEU de 22.5 en un corpus de 10k frases, sus resultados mostraron limitaciones en la traducción de términos culturales (ej: "ayni", un concepto de reciprocidad andina), que fueron traducidos literalmente sin contexto.
+
+El desarrollo de recursos lingüísticos para el quechua ha avanzado significativamente en los últimos años, aunque persisten desafíos en calidad y cobertura. El corpus Siminchik \cite{cardenas2018siminchik} es una contribución clave para el quechua sureño, enfocándose en la preservación fonética mediante la recopilación de más de 50 horas de discursos orales de comunidades rurales. Aunque su enfoque principal es el reconocimiento de voz, su transcripción escrita ofrece un recurso valioso para estudios de variación dialectal, aunque no está diseñado para traducción automática directa. Por otro lado, el corpus paralelo IWSLT2023 Quechua-Español \cite{rios2011spell}, con 573 pares de oraciones, ha sido utilizado en competiciones de traducción automática de bajos recursos. Sin embargo, su tamaño reducido y la ausencia de validación explícita de calidad limitan su utilidad para entrenar modelos robustos, como demostraron participantes del shared task, quienes reportaron sobreajuste en dominios específicos.
+
+Además, estudios como el de Rios et al. \cite{rios2015basic} en el corpus QuechuaNews evidenciaron que los modelos pre-entrenados (ej: BERT) tienen un rendimiento inferior en quechua comparado con idiomas de altos recursos, debido a la escasez de datos de entrenamiento y la complejidad morfológica. Para abordar esto, \cite{cardenas2018siminchik} propusieron transliteración fonética de textos en quechua a scripts latinos estandarizados, reduciendo la variación dialectal en modelos de TA. Sin embargo, esta aproximación sacrifica información ortográfica crítica, como la distinción entre consonantes aspiradas y glotalizadas (q vs. q').
+
+Estos trabajos pueden apreciarse de forma resumida  en la tabla \ref{tab:trabajos-relacionados}.
+
+\begin{table}[htbp]
+	\centering
+	\caption{Resumen de trabajos relacionados a traducción automática para lenguas de bajos recursos\\}
+	\label{tab:trabajos-relacionados}
+	\begin{tabularx}{\textwidth}{|p{3cm}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+		\hline
+		\textbf{Estudio}                                                                                    & \textbf{Aporte clave} & \textbf{Limitaciones identificadas} & \textbf{Relevancia para esta investigación} \\
+		\hline
+		NLLB-200 \newline (Team et al., 2022)                                                               &
+		Modelo multilingüe para 200+ idiomas con técnicas de upsampling para lenguas minoritarias           &
+		Evaluación limitada a métricas superficiales (BLEU), sin análisis semántico/cultural                &
+		Demuestra avances en TA para quechua, pero resalta necesidad de métricas cualitativas                                                                                                                           \\
+		\hline
+		Lauscher et al. (2020)                                                                              &
+		Superioridad de modelos multilingües (mBART) en lenguas morfológicamente similares (quechua-aimara) &
+		No aborda preservación de contenido cultural                                                        &
+		Soporta el uso de transformers multilingües como línea base                                                                                                                                                     \\
+		\hline
+		Chung et al. (2021)                                                                                 &
+		Mejora del 15\% en BLEU usando back-translation para náhuatl                                        &
+		Dependencia crítica de la calidad del modelo inicial                                                &
+		Advertencia sobre limitaciones de datos sintéticos                                                                                                                                                              \\
+		\hline
+		OPUS-MT \newline (Tiedemann y Thottingal, 2020)                                                     &
+		Modelo quechua-español con BLEU 22.5 usando datos de localización                                   &
+		Traducciones literales de términos culturales (ej. ''ayni'')                                        &
+		Evidencia desafíos en TA para cultura andina                                                                                                                                                                    \\
+		\hline
+		IWSLT2023 \newline (Salesky et al., 2023)                                                           &
+		Corpus paralelo quechua-español (573 oraciones) para competiciones de TA                            &
+		Tamaño reducido y sobreajuste en dominios específicos                                               &
+		Refleja escasez de datos paralelos de calidad                                                                                                                                                                   \\
+		\hline
+		QuechuaNews \newline (Rios et al., 2021)                                                            &
+		Diagnóstico de bajo rendimiento de BERT en quechua vs. idiomas de altos recursos                    &
+		Problemas por escasez de datos y complejidad morfológica                                            &
+		Justifica necesidad de modelos adaptados                                                                                                                                                                        \\
+		\hline
+	\end{tabularx}
+
+	\vspace{0.5cm}
+	\footnotesize
+	\textit{Nota.}  Elaboración propia. Adaptado de los estudios revisados en la sección de trabajos relacionados. La tabla sintetiza contribuciones clave, limitaciones y su relevancia para la evaluación de calidad semántica en traducciones quechua-español.
+\end{table}
+
+\section{Problema de Investigación}
+
+La traducción automática en lenguas de bajos recursos enfrenta desafíos estructurales derivados de la escasez de datos paralelos, la diversidad lingüística no cubierta por modelos masivos y la dependencia de métricas tradicionales como BLEU, diseñadas para idiomas con abundantes recursos. En estos contextos, los métodos existentes suelen exhibir limitaciones en la preservación del significado, ya que priorizan la equivalencia léxica superficial sobre la coherencia semántica. Esta problemática se agrava por la ausencia de marcos de evaluación adaptados, lo que dificulta medir la calidad real de las traducciones en ausencia de referencias humanas confiables.
+
+En el caso específico del quechua, estas limitaciones se manifiestan con particular intensidad. Aunque existen iniciativas recientes como el corpus paralelo IWSLT2023 (573 pares quechua-español), su escala reducida y la falta de validación explícita sobre la calidad de las traducciones lo hacen insuficiente para entrenar o evaluar modelos de forma rigurosa. A esto se suma la carencia de estudios sistemáticos que comparen modelos de traducción automática para este par lingüístico, tanto en escenarios de cero recursos como con ajustes basados en datos sintéticos.
+
+Ante esta situación se plantea la siguiente pregunta: \textit{?`En qué medida varía la calidad semántica de las traducciones de lenguas de bajos recursos quechua-español al aplicar distintos modelos de traducción automática?}
+
+\section{Variables de Investigación}
+
+\subsection{Variable Independiente}
+La variable independiente de este estudio corresponde a \textbf{modelos de traducción automática} utilizados para la conversión de texto quechua a español.
+
+Estos modelos están clasificados en las siguientes categorías:
+
+\begin{itemize}
+	\item Google Translate (modelo Transformer multilingüe).
+	\item MarianMT (modelo Transformer especializado para lenguas de bajos recursos).
+	\item \textit{Baseline} léxico (traducción palabra por palabra basada en reglas).
+\end{itemize}
+
+
+\subsection{Variable Dependiente}
+La variable dependiente es la \textbf{calidad semántica de las traducciones} operacionalizada mediante dos dimensiones:
+
+\begin{itemize}
+	\item \textbf{Métrica cuantitativa:} Similitud coseno de embeddings LaBSE (rango 0-1)
+
+	\item \textbf{Métrica cualitativa:}
+	      \begin{itemize}
+		      \item Fluidez (puntuación Likert 1-5 por evaluadores humanos)
+		      \item Adecuación semántica (puntuación Likert 1-5 por evaluadores humanos)
+	      \end{itemize}
+\end{itemize}
+
+\section{Objetivos}
+\subsection{Objetivo general}
+Evaluar la calidad semántica de las traducciones automáticas del quechua al español generadas por distintos modelos (Google Translate, MarianMT y un \textit{baseline} léxico), mediante métricas automáticas basadas en embeddings multilingües (LaBSE) y evaluaciones humanas en el contexto de lenguas de bajos recursos.
+
+\subsection{Objetivos específicos}
+
+\begin{itemize}
+	\item Aplicar modelos de traducción automática a un subconjunto de textos en quechua, obteniendo sus equivalentes en español.
+	\item Evaluar cuantitativamente la calidad semántica de las traducciones mediante el modelo LaBSE, calculando la similitud coseno entre los embeddings de los textos originales y traducidos.
+	\item Evaluar la calidad percibida de las traducciones mediante una evaluación humana que califiquen la fluidez (gramaticalidad y naturalidad) y adecuación (preservación de significado cultural) de las traducciones generadas.
+	\item Comparar el rendimiento de los modelos de traducción en función de los resultados de similitud semántica y evaluación humana.
+
+\end{itemize}
+
+\section{Hipótesis de Investigación}
+
+Se plantea que el modelo ajustado MarianMT generará traducciones automáticas quechua-español con igual o mayor calidad semántica en comparación con el modelo pre-entrenado sin ajuste, Google Translate.
+
+
+% \subsection{  \textbf{La Propuesta}}
+
+
+
+\section{Metodología de Investigación}
+
+El \textit{dataset} empleado para este trabajo es el \textit{Monolingual-Quechua-IIC}, que consta de 4,408,953 tokens y 384,184 sentencias con variantes de quechua Collao y Chanka de la rama de Quechua II. Este corpus es una compilación de 50 corpus monolingües de diferentes fuentes y que abarco varios dominios como: religión, economía, salud, cultura, politica y misceláneos.
+
+
+La evaluación comparativa se centra en tres modelos de traducción automática:
+\begin{itemize}
+	\item Google Translate como representante comercial de arquitecturas Transformer multilingües.
+	\item MarianMT como implementación especializada en lenguas minoritarias basada en Transformer.
+	\item Un modelo baseline de aproximación léxica que opera mediante reglas de sustitución palabra por palabra.
+
+\end{itemize}
+
+Para la evaluación de calidad semántica, se emplean dos enfoques complementarios. El primero utiliza el modelo LaBSE para calcular similitud coseno entre embeddings de textos originales y traducidos, proporcionando una medida cuantitativa de equivalencia semántica independiente de referencias paralelas, con valores entre 0 (sin relación) y 1 (máxima similitud).
+
+\[
+	\text{Similitud}(\mathbf{q}, \mathbf{t}) = \frac{\mathbf{q} \cdot \mathbf{t}}{\|\mathbf{q}\| \|\mathbf{t}\|}
+\]
+
+Donde:
+\begin{itemize}
+	\item \textbf{q y t}: Vectores de 768 dimensiones generados por \textit{LaBSE}.
+	\item $\cdot$: Producto punto.
+	\item $\|\mathbf{q}\|$ y $\|\mathbf{t}\|$: Normas Euclidianas de los vectores.
+\end{itemize}
+
+Esta métrica es particularmente relevante para capturar equivalencias no literales y adaptaciones culturales.
+
+Paralelamente, se realiza una evaluación humana con cinco hablantes bilingües que califican fluidez (gramaticalidad y naturalidad) y adecuación (preservación de significado cultural) mediante escalas Likert, analizando 30 frases por modelo para identificar discrepancias entre métricas automáticas y percepción nativa.
+
+Esta metodología permite no sólo identificar el modelo más efectivo para quechua-español en condiciones de bajo recurso, sino también validar la utilidad de LaBSE como métrica alternativa en ausencia de corpus paralelos de referencia.  Por un lado, se comparan promedios y dispersiones de puntajes LaBSE y evaluaciones humanas entre modelos, estableciendo rankings preliminares de desempeño.
+
+
+\section{Tipo y Diseño de la Investigación}
+
+Esta investigación se clasifica como cuantitativa y descriptiva. El diseño corresponde a un estudio no experimental, ya que se analizan modelos de traducción automática existentes sin manipular variables, midiendo su impacto en la calidad semántica en un momento específico. El enfoque es comparativo utilizando muestreo no probabilístico de textos en quechua y análisis estadístico descriptivo para responder a los objetivos planteados.

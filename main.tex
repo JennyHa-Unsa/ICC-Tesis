@@ -1,0 +1,198 @@
+%!TEX program = lualatex
+
+\documentclass[12pt,a4paper,oneside]{report}
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{longtable}
+\usepackage[refpages]{gloss}
+\usepackage{float}
+\usepackage{anysize}
+\usepackage{bigstrut}
+\usepackage{appendix}
+\usepackage{lscape} 
+\usepackage{pdflscape}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{enumerate} 
+\usepackage{ragged2e}
+\usepackage[utf8]{inputenc}
+\usepackage{comment}
+\usepackage{pslatex}
+\usepackage[colorlinks=true, citecolor=blue, urlcolor=blue]{hyperref}  % activa enlaces en apacite
+\usepackage{apacite} 
+\usepackage{fixltx2e}
+\usepackage{caption}
+\usepackage{setspace} 
+\captionsetup[table]{skip=10pt}
+\bibliographystyle{apacite}
+
+% new packages
+\usepackage{tabularx}
+\usepackage{array} 
+\usepackage{enumitem}
+
+% configuracion de sangria y espacio entre párrafos
+\setlength{\parskip}{1em}
+\setlength{\parindent}{1.27cm}
+
+
+
+\begin{document}
+\renewcommand{\BOthers}[1]{et al.\hbox{}}
+\renewcommand\bibname{Bibliografía}
+
+
+
+%----------------------------------------------------------------------------------------
+%	CONFIGURACION
+%----------------------------------------------------------------------------------------
+\marginsize{3.0cm}{3.0cm}{3.0cm}{3.0cm}
+\renewcommand*{\contentsname}{Índice}
+\renewcommand*{\listfigurename}{Lista de figuras}
+\renewcommand*{\listtablename}{Lista de tablas}
+\renewcommand{\baselinestretch}{1.0}
+\renewcommand{\appendixname}{Anexos}
+\renewcommand{\appendixtocname}{Anexos}
+\renewcommand{\appendixpagename}{Anexos}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+\renewcommand*{\tablename}{Tabla}
+\renewcommand*{\chaptername}{Capítulo}
+\renewcommand*{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+
+%----------------------------------------------------------------------------------------
+%	Carátula
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage}
+\begin{center}
+    { \large UNIVERSIDAD NACIONAL DE SAN AGUSTÍN DE AREQUIPA}\\
+    \vspace{4mm} 
+    {\large FACULTAD DE INGENIERÍA DE PRODUCCIÓN Y SERVICIOS}\\
+    \vspace{4mm} 
+    {\large ESCUELA PROFESIONAL DE CIENCIA DE LA COMPUTACIÓN}\\
+    
+    \vspace{1.5cm}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.3]{imagenes/ESCUDO.jpg}
+    \end{figure}
+    
+    %\vspace{0.5cm}
+
+    %\title{Título de mi tesis} % titulo de tu tesis para latex
+    \begin{spacing}{1.5}
+    {\large \bf EVALUACIÓN DE LA CALIDAD SEMÁNTICA DE\\ 
+    TRADUCCIONES AUTOMÁTICAS QUECHUA-ESPAÑOL AL\\
+    APLICAR DISTINTOS MODELOS DE TRADUCCIÓN}\\ % titulo de tu tesis para latex
+    \end{spacing}
+    
+    \vspace{0.5cm}
+    
+    \begin{spacing}{1.5}
+        \makebox[7cm][l]{Tesis presentada por el Bachiller:}\\
+        \makebox[7cm][l]{\textmd{\textbf{Jenny Huanca Anquise}}.}\\
+        \makebox[7cm][l]{Para optar el Título de:}\\
+        \makebox[7cm][l]{Licenciado en Ciencias de la Computación }\\
+                
+        \vspace{0.2cm}
+        \makebox[7cm][l]{\textbf{Asesor:}}\\
+        \makebox[7cm][l]{\textbf{Mag. Wilber R. Ramos Lovón}}
+    
+    \vspace{0.5cm}
+    {Arequipa - Perú\\
+    2025}
+    \end{spacing}
+    
+\end{center}
+\end{titlepage}
+
+\pagenumbering{roman}
+\newpage
+%----------------------------------------------------------------------------------------
+%	Resumen
+%----------------------------------------------------------------------------------------
+
+\include{capitulos/Resumen} % Incluye el resumen del documento
+
+%----------------------------------------------------------------------------------------
+%	Agradecimientos
+%----------------------------------------------------------------------------------------
+
+\include{capitulos/Agradecimiento}
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	TABLA DE CONTENIDOS
+%---------------------------------------------------------------------------------------
+\cleardoublepage
+\addcontentsline{toc}{chapter}{\contentsname}
+\tableofcontents \newpage
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures \newpage
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables \newpage
+\makegloss
+\newpage
+\include{capitulos/Abreviaturas} % Incluye la lista de abreviaturas
+\pagenumbering{arabic}
+
+%----------------------------------------------------------------------------------------
+%	Capítulo 1
+%----------------------------------------------------------------------------------------
+% \doublespacing
+% \chapter{Título de capítulo 1}
+% \section{Título de sección}
+% \subsection{Título de subsección}
+% \subsubsection{Título de subsubsección}
+% \begin{spacing}{1.5}
+% {Ejemplo de cuerpo y ejemplo de imagen en l \ref{fig:PLACEHOLDER}. }
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.5\textwidth]{imagenes/640x360.png}
+%     \caption{Ejemplo de imagen.}
+%     \label{fig:PLACEHOLDER}
+% \end{figure}
+
+% \begin{equation} \label{eq:1}
+%     S=\sum_iP_ilog(P_i)
+% \end{equation}
+
+
+% \end{spacing}
+
+\include{capitulos/1_introduccion}
+\include{capitulos/2_Estado_arte}
+\include{capitulos/3_Marco_teorico}
+\include{capitulos/4_Propuesta}
+\include{capitulos/5_Conclusiones}
+\include{capitulos/6_Trabajos_futuros}
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAFIA
+%----------------------------------------------------------------------------------------
+\doublespacing
+\bibliography{bibliografia}
+
+
+%----------------------------------------------------------------------------------------
+%	Anexos
+%----------------------------------------------------------------------------------------
+\appendix
+\renewcommand{\appendixname}{Anexo}%
+\chapter*{\appendixname}
+\phantomsection
+\end{document} 

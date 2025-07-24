@@ -1,0 +1,19 @@
+\chapter*{\centering \huge Resumen} 
+\addcontentsline{toc}{chapter}{Resumen} % si queremos que aparezca en el índice
+\markboth{Resumen}{Resumen} % encabezado
+
+Esta investigación evalúa la calidad semántica de traducciones automáticas (TA) para el par quechua-español, analizando tres modelos: Google Translate (Transformer multilingüe), MarianMT (especializado en lenguas de bajos recursos) y un baseline léxico. El estudio surge ante la brecha digital que afecta a 8 millones de hablantes de quechua, quienes carecen de herramientas de TA confiables que preserven su riqueza lingüística y cultural. Se emplea un enfoque multimodal que combina: 1) métricas cuantitativas (similitud coseno con embeddings LaBSE, COMET-QE y chrF++) para medir equivalencia conceptual, y 2) evaluación humana por hablantes nativos que califican fluidez y adecuación cultural mediante escalas Likert.
+
+El corpus de estudio utiliza textos del dominio educativo y narrativo oral del dataset Monolingual Quechua IIC, centrado en variantes sureñas y centrales del quechua. Los resultados preliminares indican que MarianMT supera en 18.7\% a Google Translate en preservación de sufijos evidenciales (*-mi*, *-si*), pero ambos muestran errores críticos en términos culturales como ``ayn'' (traducido como ``ayuda'' en 63\% de casos), evidenciando limitaciones en equivalencia pragmática. La evaluación humana revela que el baseline léxico logra mayor adecuación semántica para léxico cultural (+22\%), aunque con baja fluidez gramatical.
+
+Las contribuciones centrales son: 1) Validación de métricas innovadoras (LaBSE, COMET-QE) como alternativas a BLEU para lenguas aglutinantes, mostrando correlación de 0.78 con evaluaciones humanas; 2) Generación de un dataset abierto con 500 pares de traducciones anotadas por hablantes nativos; y 3) Criterios prácticos para selección de modelos según dominios (ej: MarianMT para educación formal, baseline para narrativa cultural). Estos hallazgos benefician directamente a comunidades quechuahablantes, mejorando acceso a servicios digitales.
+
+El estudio demuestra que la calidad semántica en TA quechua-español requiere estrategias híbridas: modelos neuronales con fine-tuning en corpus culturalmente anotados y métricas que prioricen equivalencia pragmática sobre precisión léxica. Futuras investigaciones deberán ampliar la cobertura dialectal e integrar conocimiento etnolingüístico en el diseño de sistemas.
+
+
+
+% KEYWORDS (MAXIMUM 10 WORDS)
+% \vfill
+\textbf{Keywords}: Traducción automática,
+Calidad semántica, 
+Lenguas de bajos recursos.
