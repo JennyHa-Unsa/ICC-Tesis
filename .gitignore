@@ -5,6 +5,6 @@
 *.log
 *.out
 *.toc
-*.pdf
+# *.pdf
 *.lof
 *.gz
